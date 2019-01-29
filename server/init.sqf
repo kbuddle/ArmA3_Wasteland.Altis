@@ -12,7 +12,8 @@
 
 if (!isServer && hasInterface) exitWith {};
 
-externalConfigFolder = "\A3Wasteland_settings";
+// externalConfigFolder = "C:\games\108_61_227_7_2302\1414073\arma3\A3Wasteland_settings"; // for Gameservers
+externalConfigFolder = "\A3Wasteland_settings"; // for wombat servers
 
 if (isServer) then
 {

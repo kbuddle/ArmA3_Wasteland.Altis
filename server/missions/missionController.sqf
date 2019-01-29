@@ -17,8 +17,8 @@ if (_controllerNum > 1) then
 	_controllerSuffix = format [" %1", _controllerNum];
 };
 
-diag_log format ["WASTELAND SERVER - Started %1 Mission%2 Controller", MISSION_CTRL_TYPE_NAME, _controllerSuffix];
-
+//diag_log format ["WASTELAND SERVER - Started %1 Mission%2 Controller", MISSION_CTRL_TYPE_NAME, _controllerSuffix];
+diag_log format ["SERVER - STARTED Controller %1 for %2 Mission",_controllerSuffix, MISSION_CTRL_TYPE_NAME]; //BuddskiDEBUG
 _missionsFolder = MISSION_CTRL_FOLDER;
 [MISSION_CTRL_PVAR_LIST, MISSION_CTRL_FOLDER] call attemptCompileMissions;
 
@@ -30,8 +30,8 @@ while {true} do
 
 	while {isNil "_nextMission"} do
 	{
-		_availableMissions = [MISSION_CTRL_PVAR_LIST, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
-		// _availableMissions = MISSION_CTRL_PVAR_LIST; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
+		//_availableMissions = [MISSION_CTRL_PVAR_LIST, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
+		_availableMissions = MISSION_CTRL_PVAR_LIST; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
 
 		if (count _availableMissions > 0) then
 		{
@@ -46,14 +46,14 @@ while {true} do
 
 	[MISSION_CTRL_PVAR_LIST, _nextMission, true] call setMissionState;
 
-	diag_log format ["WASTELAND SERVER - %1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
-
+	// diag_log format ["WASTELAND SERVER - %1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
+	diag_log format ["SERVER - WAITING %1 Mission %2 : %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission]; //BuddskiDEBUG
 	[
-		format
+		parsetext format
 		[
-			"<t color='%1' shadow='2' size='1.75'>%2 Objective%3</t><br/>" +
-			"<t color='%1'>------------------------------</t><br/>" +
-			"<t color='%4' size='1.0'>Starting in %5 minutes</t>",
+			"<t align='center' color='%1' shadow='2' size='1.75'>%2 Objective%3</t><br/>" +
+			"<t align='center' color='%1'>------------------------------</t><br/>" +
+			"<t align='center' color='%4' size='1.0'>Starting in %5 minutes</t>",
 			MISSION_CTRL_COLOR_DEFINE,
 			MISSION_CTRL_TYPE_NAME,
 			_controllerSuffix,

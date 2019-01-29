@@ -19,7 +19,7 @@ _aiGroup = grpNull;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-diag_log format ["WASTELAND SERVER - %1 Mission%2 started: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+diag_log format ["SERVER - STARTED %1 Mission %2 : %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType]; //BuddskiDEBUG
 
 _missionTimeout = MISSION_PROC_TIMEOUT;
 
@@ -55,7 +55,9 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 ]
 call missionHint;
 
-diag_log format ["WASTELAND SERVER - %1 Mission%2 waiting to be finished: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+
+// diag_log format ["WASTELAND SERVER - %1 Mission%2 waiting to be finished: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+diag_log format ["SERVER - WAITING %1 Mission %2 : %3 at location %4", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType, _missionPos]; //BuddskiDEBUG
 
 _failed = false;
 _complete = false;
@@ -141,7 +143,11 @@ if (_failed) then
 	]
 	call missionHint;
 
-	diag_log format ["WASTELAND SERVER - %1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	// diag_log format ["WASTELAND SERVER - %1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	// if (_startTime >= _missionTimeout) then 
+	//diag_log format ["SERVER - FAILED %1 Mission %2 : %3  at location %4", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType, _missionLocation]} //BuddskiDEBUG	}
+	//else
+	diag_log format ["SERVER - FAILED %1 Mission %2 : %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType]; 
 }
 else
 {
@@ -164,31 +170,22 @@ else
 	{
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
 		_vehicle setVariable ["A3W_missionVehicle", true, true];
-		_vehicle setVariable ["A3W_lockpickDisabled", nil, true];
 
-		if (!isNil "fn_manualVehicleSave" && !(_vehicle getVariable ["A3W_skipAutoSave", false])) then
+		if (!isNil "fn_manualVehicleSave") then
 		{
 			_vehicle call fn_manualVehicleSave;
 		};
 	};
-
-	private _convoyAutoSave = ["A3W_missionVehicleSaving"] call isConfigOn;
 
 	if (!isNil "_vehicles" && {typeName _vehicles == "ARRAY"}) then
 	{
 		{
 			if (!isNil "_x" && {typeName _x == "OBJECT"}) then
 			{
-				if (!_convoyAutoSave) then
-				{
-					_x setVariable ["A3W_skipAutoSave", true, true];
-				};
-
 				_x setVariable ["R3F_LOG_disabled", false, true];
 				_x setVariable ["A3W_missionVehicle", true, true];
-				_x setVariable ["A3W_lockpickDisabled", nil, true];
 
-				if (!isNil "fn_manualVehicleSave" && !(_x getVariable ["A3W_skipAutoSave", false])) then
+				if (!isNil "fn_manualVehicleSave") then
 				{
 					_x call fn_manualVehicleSave;
 				};
@@ -204,8 +201,8 @@ else
 		successMissionColor
 	]
 	call missionHint;
-
-	diag_log format ["WASTELAND SERVER - %1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	// diag_log format ["WASTELAND SERVER - %1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	diag_log format ["SERVER - COMPLETE %1 Mission%2: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType]; //BuddskiDEBUG
 };
 
 deleteGroup _aiGroup;

@@ -2,16 +2,47 @@
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
 //	@file Name: masterController.sqf
-//	@file Author: AgentRev
+//	@file Author: AgentRev, BUDDSKI
 
 _ctrlTypes =
 [
 	"mainMission",
 	"moneyMission",
-	"sideMission"
+	"sideMission",
+	"assaultMission",
+	"airMission",
+	"priorityMission"
 ];
 
-_ctrlQuantity = (["A3W_missionsQuantity", 6] call getPublicVar) max 0 min 6;
+_testController =//BUDDSKI
+[
+	"testMission" 
+];
+
+// if !(["A3W_enableTestMissions"]=1) then _ctrlTypes append _testController; //BUDDSKI not working true false 1 0 try next approach below
+if (["A3W_enableTestMissions"] call isConfigOn) then 
+{
+	_ctrlTypes =
+	[
+		"mainMission",
+		"moneyMission",
+		"sideMission",
+		"assaultMission",
+		"airMission",
+		"priorityMission",
+		"testMission"
+	];	
+};	
+	
+	
+	
+	
+//	append _testController; //BUDDSKI
+//isconfig on A3W_enableTestMissions for "testMission"  //BUDDSKI
+
+_ctrlTypes call BIS_fnc_arrayshuffle; //BUDDSKI
+
+_ctrlQuantity = (["A3W_missionsQuantity", 8] call getPublicVar) max 0 min 8;
 // WARNING: Pushing the value higher than 6 is not recommended unless you add more mission types (especially money missions) and convoy routes.
 // Currently, all missions on the map must be of a different types, so if you have 3 money missions controllers, one of them is going to stay
 // idle, because there are only 2 money missions to choose from. Same with convoy paths, if you have 3 active convoys and a 4th one is started,
