@@ -8,9 +8,9 @@
 
 if (!hasInterface) exitWith {};
 
-#define ICON_fadeDistance 1250
-#define ICON_limitDistance 2000
-#define ICON_sizeScale 0.75
+#define ICON_fadeDistance 20
+#define ICON_limitDistance 50
+#define ICON_sizeScale 0.60
 
 #define MINE_ICON_MAX_DISTANCE 200 // 200 is Arma 3 default for mine detector
 
