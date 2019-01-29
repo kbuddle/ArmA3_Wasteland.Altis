@@ -11,6 +11,7 @@
 // _x select 3 = Value
 
 #define GET_HALF_PRICE(PRICE) ((ceil (((PRICE) / 2) / 5)) * 5)
+#define GET_EIGHTH_PRICE(PRICE) ((ceil (((PRICE) / 8) / 5)) * 5)
 
 private ["_obj", "_sellValue", "_objItems", "_objMags", "_objWeapons", "_weaponArray", "_class", "_container", "_allStoreMagazines", "_allGunStoreFirearms", "_allStoreItems", "_weaponEntry", "_weaponClass", "_weaponQty", "_weaponCfg", "_weaponCfgModel", "_masterCfg", "_found", "_cfgItems", "_allObjItems", "_item", "_itemClass", "_itemQty", "_itemValue", "_itemQtyArr", "_cfgCategory", "_magFullAmmo", "_magFullPrice", "_magValue", "_itemName"];
 
@@ -169,10 +170,10 @@ _allObjItems append _objBackpacks;
 				};
 			} forEach _allStoreMagazines;
 
-			_sellValue = _sellValue + GET_HALF_PRICE(_itemValue * _itemQty); // full mags
+			_sellValue = _sellValue + GET_EIGHTH_PRICE(_itemValue * _itemQty); // full mags
 
 			{
-				_sellValue = _sellValue + GET_HALF_PRICE(_itemValue * (_x / _magFullAmmo)); // partial mags
+				_sellValue = _sellValue + GET_EIGHTH_PRICE(_itemValue * (_x / _magFullAmmo)); // partial mags
 			} forEach _magsAmmo;
 
 			_item set [1, _itemQty + count _magsAmmo]; // readjust total count before displaying to user
@@ -180,6 +181,7 @@ _allObjItems append _objBackpacks;
 		else
 		{
 			{
+
 				if (_x select 1 == _itemClass) exitWith
 				{
 					_itemValue = GET_HALF_PRICE((_x select 2) * _itemQty);
@@ -188,7 +190,11 @@ _allObjItems append _objBackpacks;
 
 			_sellValue = _sellValue + _itemValue;
 		};
-
+		if (_cfgCategory == "CfgWeapons") then
+			{
+				_sellValue = _sellValue - _itemValue*3/4
+			};
+	
 		_itemName = getText (configFile >> _cfgCategory >> _itemClass >> "displayName");
 
 		_item set [2, _itemName];
