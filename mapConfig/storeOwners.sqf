@@ -10,23 +10,29 @@
 // Name, Building Position, Desk Direction (or [Desk Direction, Front Offset]), Excluded Buttons
 storeOwnerConfig = compileFinal str
 [
-	["GenStore1", 6, 240, []],
-	["GenStore2", 6, 250, []],
-	["GenStore3", 6, 45, []],
-	["GenStore4", 0, 265, []],
-	["GenStore5", 5, 350, []],
+	["GenStore1", 6, 240, []], //South Central Island
+	["GenStore2", 6, 250, []], //Selakano
+	["GenStore3", 6, 45, []], //Charkia
+	["GenStore4", 0, 265, []], //Agios Dionysus
+	["GenStore5", 5, 350, []], //Oreokastro
+	["GenStore6", 4, 270, []], //Molos
+	["GenStore7", 3, 140, []], //Panachori
 
-	["GunStore1", 1, 0, []],
-	["GunStore2", 1, 75, []],
-	["GunStore3", 6, 135, []],
-	["GunStore4", 1, 65, []],
+	["GunStore1", 1, 0, []], //Kavala
+	["GunStore2", 1, 75, []], //Pyrgos
+	["GunStore3", 6, 135, []], //Sofia
+	["GunStore4", 1, 65, []], //Abdera
+	["GunStore5", 1, 120, []], //Selakano
+	["GunStore6", 3, 90, []], //South Central Island
 
 	// Buttons you can disable: "Land", "Armored", "Tanks", "Helicopters", "Boats", "Planes"
-	["VehStore1", 1, 75, []],
-	["VehStore2", 6, 45, ["Boats"]],
-	["VehStore3", 4, 250, ["Boats"]],
-	["VehStore4", 5, 155, ["Boats"]],
-	["VehStore5", 0, 190, ["Planes"]]
+	["VehStore1", 1, 75, []], //Molos
+	["VehStore2", 6, 45, ["Boats"]], //Saltflats
+	["VehStore3", 4, 250, ["Boats"]], //Selakano
+	["VehStore4", 5, 155, ["Boats"]], //Main airfield
+	["VehStore5", 0, 190, ["Planes"]], //West coast
+	["VehStore6", 1, 160, ["Boats", "Planes"]], //Pyrgos
+	["VehStore7", 0, 60, []] //AAC
 ];
 
 // Outfits for store owners
