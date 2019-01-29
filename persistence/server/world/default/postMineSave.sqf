@@ -24,5 +24,5 @@ if (_oldMineCount > _mineCount) then
 if (call A3W_savingMethod == "profile") then
 {
 	saveProfileNamespace; // this line is crucial to ensure all profileNamespace data submitted to the server is saved
-	diag_log "A3W - profileNamespace saved";
+	// diag_log "A3W - profileNamespace saved"; BUDDSKI EDIT
 };
