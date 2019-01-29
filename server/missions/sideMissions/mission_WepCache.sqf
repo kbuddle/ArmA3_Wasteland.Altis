@@ -13,7 +13,7 @@ private ["_nbUnits", "_box1", "_box2"];
 
 _setupVars =
 {
-	_missionType = "Aircraft Wreck";
+	_missionType = "Weapons Cache";
 	_locationsArray = [ForestMissionMarkers, MissionSpawnMarkers] select (ForestMissionMarkers isEqualTo []);
 	_nbUnits = if (missionDifficultyHard) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
 };

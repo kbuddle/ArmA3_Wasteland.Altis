@@ -30,7 +30,7 @@ _setupObjects =
 	else
 	{
 		[
-			["B_Quadbike_01_F", "C_Van_01_box_F", "B_Quadbike_01_F"],
+			["O_MRAP_02_hmg_F", "C_Van_01_box_F", "O_MRAP_02_hmg_F"],
 			["I_G_Offroad_01_F", "I_Truck_02_transport_F", "I_G_Offroad_01_F"]
 		] call BIS_fnc_selectRandom;
 	};

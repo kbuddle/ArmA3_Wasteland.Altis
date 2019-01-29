@@ -10,6 +10,8 @@
 if (!isServer) exitwith {};
 #include "moneyMissionDefines.sqf";
 
+_moneyamount = Tier_2_reward;
+
 private ["_cashObjects", "_cash", "_cashPos", "_box1", "_boxPos", "_vehicleClass", "_vehicle"];
 
 _setupVars =
@@ -78,7 +80,7 @@ _successExec =
 
 	// Give the rewards
 	{
-		_x setVariable ["cmoney", 2500, true];
+		_x setVariable ["cmoney", _moneyamount / 10, true];
 		_x setVariable ["owner", "world", true];
 	} forEach _cashObjects;
 

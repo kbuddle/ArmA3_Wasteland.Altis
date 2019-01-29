@@ -9,6 +9,8 @@ if (!isServer) exitwith {};
 
 private ["_box1", "_box2", "_boxPos"];
 
+_moneyAmount = Tier_1_Reward; //Reward amount for completing mission
+
 _setupVars =
 {
 	_missionType = "Sunken Supplies";
@@ -34,7 +36,7 @@ _setupObjects =
 	} forEach [_box1, _box2];
 
 	_aiGroup = createGroup CIVILIAN;
-	[_aiGroup, _missionPos] call createSmallDivers;
+	[_aiGroup, _missionPos] call createLargeDivers;
 
 	_missionHintText = "Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.";
 };
