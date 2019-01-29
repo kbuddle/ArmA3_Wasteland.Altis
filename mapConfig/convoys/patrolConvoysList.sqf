@@ -1,14 +1,16 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: coastalConvoysList.sqf
-//	@file Author: AgentRev
+//	@file Name: patrolConvoysList.sqf
+//	@file Author: AgentRev, LouD, Buddski
+
+// @file modified : 17/12/2018
 
 [
-	"CoastalConvoy_1",
-	"CoastalConvoy_2",
-	"CoastalConvoy_3",
-	"CoastalConvoy_4",
-	"CoastalConvoy_5",
-	"CoastalConvoy_6"
+	"PatrolConvoy_1",
+	"PatrolConvoy_2",
+	"PatrolConvoy_3",
+	"PatrolConvoy_4",
+	"PatrolConvoy_5",
+	"PatrolConvoy_6"
 ]

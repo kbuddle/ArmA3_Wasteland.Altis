@@ -1,14 +1,14 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: coastalConvoysList.sqf
-//	@file Author: AgentRev
+//	@file Name: artyConvoysList.sqf
+//	@file Author: WitchDoctor [GGO]
 
 [
-	"CoastalConvoy_1",
-	"CoastalConvoy_2",
-	"CoastalConvoy_3",
-	"CoastalConvoy_4",
-	"CoastalConvoy_5",
-	"CoastalConvoy_6"
+	"rushConvoy_1",
+//	"rushConvoy_2",
+	"rushConvoy_3",
+	"rushConvoy_4",
+	"rushConvoy_5",
+	"rushConvoy_6"	
 ]
