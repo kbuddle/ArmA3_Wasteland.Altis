@@ -16,6 +16,7 @@ waitUntil {!isNull player};
 player createDiarySubject ["infos", "Infos and Help"];
 player createDiarySubject ["changelog", "Changelog"];
 player createDiarySubject ["credits", "Credits"];
+player createDiarySubject ["missions", "Missions"];
 
 player createDiaryRecord ["changelog",
 [
@@ -633,5 +634,26 @@ player createDiaryRecord ["infos",
 <br/>
 <br/>Q. I saw someone breaking a rule, what do I do?
 <br/>A. Simply go into global chat and get the attention of one of the admins or visit our forums, and make a report if the offense is serious.
+"
+]];
+
+player createDiaryRecord ["missions",
+[
+"About The missions",
+"
+<br/>•	Side - simpler missions for those new to Arma or want an easy life and get a smaller reward
+<br/>
+<br/>•	Main - more difficult missions but with bigger rewards and a potential vehicle
+<br/>
+<br/>•	Money - variety of land/sea based missions with small medium or large cash rewards
+<br/>
+<br/>•	Priority - missions vary from medium to suicidal, multi-vehicle types, often with very high rewards
+<br/>
+<br/>•	Assault - ground based collection of infantry, medium to high difficulty with varying rewards
+<br/>
+<br/>•	Air - air based units - get the AA out - single aircraft missions will drop crates at point of crash, multi aircraft missions drops crates at the moment the mission ends so watch that map after shooting your last AA
+<br/>
+<br/>•	Test - expect the unexpected.
+<br/>
 "
 ]];
