@@ -10,9 +10,9 @@ private ["_group", "_pos", "_nbUnits", "_unitTypes", "_uPos", "_unit"];
 
 _group = _this select 0;
 _pos = _this select 1;
-_nbUnits = param [2, 7, [0]];
-_radius = param [3, 10, [0]];
-
+_nbUnits = _this select 2;
+_radius =  _this select 3; // param [3, 10, [0]];
+ diag_log format ["CUSTOMGROUP6 - _group %1, _pos %2, _NBUnits %3, _radius %4", _group, _pos, _nbUnits, _radius ];
 _unitTypes =
 [
 	"C_man_polo_1_F", "C_man_polo_1_F_euro", "C_man_polo_1_F_afro", "C_man_polo_1_F_asia",
@@ -26,9 +26,9 @@ _unitTypes =
 for "_i" from 1 to _nbUnits do
 {
 	_uPos = _pos vectorAdd ([[random _radius, 0, 0], random 360] call BIS_fnc_rotateVector2D);
-	_unit = _group createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "Form"];
+	_unit = _group createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "NONE"];
 	_unit setPosATL _uPos;
-
+ diag_log format ["CUSTOMGROUP6 - _unit %1", _unit];
 	removeAllWeapons _unit;
 	removeAllAssignedItems _unit;
 	removeUniform _unit;
@@ -44,46 +44,54 @@ for "_i" from 1 to _nbUnits do
 
 	switch (true) do
 	{
-		// Grenadier every 3 units
-		case (_i % 3 == 0):
+		// HMG every 3 units
+		case (_i % 4 == 0):
 		{
-			_unit addUniform "U_B_CombatUniform_mcam_vest";
-			_unit addMagazine "1Rnd_HE_Grenade_shell";
-			_unit addWeapon "arifle_TRG21_GL_F";
-			_unit addMagazine "1Rnd_HE_Grenade_shell";
-			_unit addMagazine "1Rnd_HE_Grenade_shell";
+			_unit addUniform "U_B_CombatUniform_mcam_tshirt";
+			_unit addBackpack "B_Kitbag_mcamo";
+			_unit addWeapon "MMG_02_sand_F";
+			_unit addMagazine "130Rnd_338_Mag";
+			_unit addMagazine "130Rnd_338_Mag";
 		};
-		// RPG every 7 units, starting from second one
-		case ((_i + 5) % 7 == 0):
+
+		// RPG every 7 units
+		case (_i % 7 == 0):
 		{
 			_unit addUniform "U_B_CombatUniform_mcam_tshirt";
 			_unit addBackpack "B_Kitbag_mcamo";
 			_unit addWeapon "arifle_TRG20_F";
-			_unit addMagazine "Titan_AT";
-			_unit addWeapon "launch_Titan_short_F";
-			_unit addMagazine "Titan_AT";
-			_unit addMagazine "Titan_AT";
+			_unit addMagazine "RPG32_HE_F";
+			_unit addWeapon "launch_RPG32_F";
+			_unit addMagazine "RPG32_HE_F";
+			_unit addMagazine "RPG32_HE_F";
 		};
 		// Rifleman
 		default
 		{
-			_unit addUniform "U_B_CombatUniform_mcam";
+			
 
 			if (_unit == leader _group) then
 			{
+				_unit addUniform "U_B_Protagonist_VR";
 				_unit addWeapon "arifle_TRG21_F";
 				_unit addMagazine "HandGrenade";
-				_unit setRank "SERGEANT";
+				_unit setRank "MAJOR";
+				_unit addMagazine "HandGrenade";
 			}
 			else
 			{
+				_unit addUniform "U_B_CombatUniform_mcam";
 				_unit addWeapon "arifle_TRG20_F";
+				_unit addMagazine "HandGrenade";
+				_unit addMagazine "HandGrenade";
 				_unit addMagazine "HandGrenade";
 			};
 		};
 	};
 
 	_unit addPrimaryWeaponItem "acc_flashlight";
+	_unit addHeadgear "H_HelmetO_ocamo";
+	_unit addGoggles "G_Balaclava_blk";
 	_unit enablegunlights "forceOn";
 
 	_unit addRating 1e11;
@@ -92,5 +100,5 @@ for "_i" from 1 to _nbUnits do
 	_unit call setMissionSkill;
 	_unit addEventHandler ["Killed", server_playerDied];
 };
-
+diag_log format ["CUSTOMGROUP6 group formed %1", _group];
 [_group, _pos] call defendArea;

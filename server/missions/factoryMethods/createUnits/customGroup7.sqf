@@ -1,8 +1,8 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: customGroup2.sqf
-//	@file Author: AgentRev, BUDDSKI
+//	@file Name: customGroup.sqf
+//	@file Author: AgentRev
 
 if (!isServer) exitWith {};
 
@@ -83,6 +83,26 @@ for "_i" from 1 to _nbUnits do
 
 	_unit addRating 1e11;
 	_unit spawn refillPrimaryAmmo;
-	_unit call setMissionSkill;
+//	_unit call setMissionSkill;
+{
+_x call setMissionSkill; 
+	// setting skill for skillAI
+	_x setSkill ["commanding", 1]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["spotDistance", .9]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["spotTime", .8]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["courage", 1]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["aimingSpeed", 8]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["reloadSpeed", .8]; //added to test skill adjustment BUDDSKI aiskill
+
+	_x setSkill ["aimingAccuracy", 0.7]; //added to test skill adjustment BUDDSKI aiskill
+	_x setSkill ["aimingShake", 0.7]; //added to test skill adjustment BUDDSKI aiskill
+	// setting skils for precisionAI
+	_x allowFleeing 0;
+	_x addRating 9999999;
+	_x addEventHandler ["Killed", server_playerDied];
+} forEach units _group;
+	
 	_unit addEventHandler ["Killed", server_playerDied];
 };
+
+[_group, _pos] call defendArea;
