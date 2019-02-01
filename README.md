@@ -1,4 +1,14 @@
-# A3Wasteland Altis
+# RAID A3Wasteland Altis
+
+An adaptation of the works forked from AgentRev, this variation has been customised as RAID for Random ai Driven missions. The purpose of the customisation is for use in a PvE server where team or player killing is not tolerated.
+
+The sub missions are more and varied, with a lot more randomisation in ai behaviours, skills, numbers, rewards with the overall objective to create a stimualting adversary rather than a lame duckshoot.
+
+As a first foray into scripting there is lots of scope to improve the code flow and especially efficiency. Also new to git so commenting is lame in places, aimign to improve :)
+cheers
+Buddski
+
+From Agent Rev
 
 A3Wasteland is a survival-like combat sandbox, which incorporates elements of team deathmatch and sector control in one big fun-to-play package. Similar to DayZ, the objectives are to scavenge weapons and vehicles, team up with fellow players, and engage in combat to obtain control of the landscape. Best experienced with 50 or more players. 
 
